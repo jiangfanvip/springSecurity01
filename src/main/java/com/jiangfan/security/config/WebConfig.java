@@ -38,6 +38,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     }
 
+    /**
+     * 访问/默认为应用根目录，重定向到spring security 的/login登录页面
+     * @param registry
+     */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("redirect:/login");

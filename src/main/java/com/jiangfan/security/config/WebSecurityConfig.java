@@ -38,13 +38,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {  //继承W
     //安全拦截机制
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()   //授权请求的认证
-                .antMatchers("/user/p1").hasAuthority("p1")  //访问/user/p1的用户需要p1权限
-                .antMatchers("/user/p2").hasAuthority("p2")  //访问/user/p2的用户需要p1权限
+        http.authorizeRequests()   //授权基于httpServletRequest的请求的认证
                 .antMatchers("/user/**").authenticated() //所有/user/**的请求资源必须认证通过
-                .anyRequest().permitAll() //请求许可  其它请求资源可以放行
+                .antMatchers("/user/p1").hasAuthority("p1")  //访问/user/p1的用户需要p1权限
+                .antMatchers("/user/p2").hasAuthority("p2")  //访问/user/p2的用户需要p2权限
+                .anyRequest().permitAll() //除了/user/**的资源，其它请求资源可以放行通过
                 .and().formLogin() //允许表单登录
-                .successForwardUrl("/login-success");//登录成功跳转页面地址
+                .successForwardUrl("/login-success");//登录成功跳转页面地址,跳转到我们自定义的handler
 
     }
 }
