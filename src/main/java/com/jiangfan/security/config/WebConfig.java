@@ -23,8 +23,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc  //开启spring mvc
 @ComponentScan(basePackages = "com.jiangfan.security", includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class)})
 //只扫描注册所修饰的@controller
-public class WebConfig implements WebMvcConfigurer {
-    /**
+    public class WebConfig implements WebMvcConfigurer {
+        /**
      * 配置视图解析器
      *
      * @return
